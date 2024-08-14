@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}{{user.username}}'s Page{% endblock %}
+
+{% block content %} 
+
+    <h2 class="mt-4">Feedback</h2>
+
+    <ul class="mb-4">
+      {% for feedback in user.feedback %}
+
+      <li class="mt-4">
+        <b>{{feedback.title}} - </b>{{feedback.content}}
+      </li>
+
+      
+      <form method="post" action="/feedback/{{feedback.id}}/delete" id="delete-form">
+        {{form.hidden_tag()}}
+        <a href='/feedback/{{feedback.id}}/update' class="btn btn-primary btn-sm">Edit</a>
+        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+      </form>
+
+      {% endfor %}
+    </ul>
+
+      <a href="/users/{{user.username}}/feedback/add" class="btn btn-primary">Add feedback</a>
+
+    <form method="post" action="/users/{{user.username}}/delete">
+      <button class="btn btn-danger btn-sm mt-4">Delete User</button>
+    </form>
+
+
+{% endblock %}
