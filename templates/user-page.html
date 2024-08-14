@@ -3,7 +3,9 @@
 {% block title %}{{user.username}}'s Page{% endblock %}
 
 {% block content %} 
-
+  <h1>{{user.username}}</h1>
+  <p>{{user.first_name}} {{user.last_name}}</p>
+  <p>{{user.email}}</p>
     <h2 class="mt-4">Feedback</h2>
 
     <ul class="mb-4">

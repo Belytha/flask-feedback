@@ -12,15 +12,14 @@ app.config['SECRET_KEY'] = b'_5#y2L"F4Q8z\n\xec]/'
 
 connect_db(app)
 
-with app.app_context():
-    db.drop_all()
-    db.create_all()
+#with app.app_context():
+#    db.drop_all()
+#    db.create_all()
 
 @app.route('/')
 def home():
     """Redirects to /register if not logged in"""
     with app.app_context():
-        session.clear()
         #if user logged in
         if "username" in session:
             return redirect(f"/users/{session['username']}")
